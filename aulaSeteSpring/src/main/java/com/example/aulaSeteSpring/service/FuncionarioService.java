@@ -47,4 +47,19 @@ public class FuncionarioService {
 
         return funcionarioRepository.save(funcionario);
     }
+
+    public void excluir(String Email){
+        Funcionario funcionario = funcionarioRepository.findByEmail(Email)
+            .orElseThrow(() -> new RuntimeException("Funcionario não encontrado!"));
+        
+        funcionarioRepository.deleteById(funcionario.getId());
+    }
+
+    public String mensagem(Funcionario funcionario){
+        return "Funcionario " + funcionario.getNome() + " cadastrado com sucesso!";
+    }
+
+    public String mensagemAtualizar(Funcionario funcionario){
+        return "Os dados de " + funcionario.getNome() + " foram alterados com sucesso!";
+    }
 }
