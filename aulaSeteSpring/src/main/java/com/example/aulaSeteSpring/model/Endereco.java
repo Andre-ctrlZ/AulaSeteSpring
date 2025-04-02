@@ -31,14 +31,6 @@ public class Endereco {
     @Size(max = 2)
     private String uf;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public @NotBlank(message = "Logradouro não pode ser vazio.") String getLogradouro() {
         return logradouro;
     }

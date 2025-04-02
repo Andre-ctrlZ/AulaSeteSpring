@@ -62,4 +62,8 @@ public class FuncionarioService {
     public String mensagemAtualizar(Funcionario funcionario){
         return "Os dados de " + funcionario.getNome() + " foram alterados com sucesso!";
     }
+
+    public String mensagemExcluir(Funcionario funcionario){
+        return "Os dados foram excluidos";
+    }
 }

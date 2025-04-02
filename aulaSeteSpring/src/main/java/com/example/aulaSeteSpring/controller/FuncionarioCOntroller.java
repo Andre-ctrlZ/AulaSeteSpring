@@ -2,8 +2,10 @@ package com.example.aulaSeteSpring.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.aulaSeteSpring.model.Funcionario;
 import com.example.aulaSeteSpring.service.FuncionarioService;
@@ -35,8 +37,8 @@ public class FuncionarioCOntroller {
     }
 
     @DeleteMapping("/{email}")
-    public ResponseEntity<String> excluir(@PathVariable String email){
+    public ResponseEntity<String> excluir(@PathVariable String email, Funcionario funcionario){
         funcionarioService.excluir(email);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Funcionario excluído com sucesso!");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(funcionarioService.mensagemExcluir(funcionario));
     }
 }
